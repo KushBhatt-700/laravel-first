@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
     @include('layouts.head')
-	<body>
+	<body style="color: #ffffff; background-color: #000000">
 			@include('layouts.header_menu')
             <div class="container mb-5 mt-5">
                 {{-- @if(session()->get('status')) --}}

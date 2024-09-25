@@ -117,6 +117,32 @@
     © 2021 Copyright:
     <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
   </div>
+  <script>
+
+    // Check if there's a selected language stored in localStorage
+    if (localStorage.getItem('thisDataLangObj')) {
+        // Update the text of the first <a> with the stored language
+        $('.dropdown-toggle').text(localStorage.getItem('thisDataLangObj'));
+    }
+		
+    $('.dropdown-item').on('click', function(event){
+      
+      event.preventDefault();
+      
+      var thisDataLangObj = $(this).data('lang');
+      var thisDataHrefObj = $(this).attr('href');
+			var dropdownItemValue = $(thisDataLangObj).data('lang');
+
+      // Update the main dropdown toggle text with the selected language
+      $('.dropdown-toggle').text(dropdownItemValue);
+
+      // Store the selected language in localStorage
+      localStorage.setItem('thisDataLangObj', thisDataLangObj);
+
+      // Redirect to the selected URL
+      window.location.href = thisDataHrefObj;
+		});
+	</script>
   <!-- Copyright -->
 </footer>
 <!-- Footer -->

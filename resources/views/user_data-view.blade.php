@@ -1,15 +1,16 @@
 <!doctype html>
 <html class="no-js" lang="en">
     @include('layouts.head')
-	<body>
-        <div id="userFormAlert" class="alert alert-success alert-dismissible fade" role="alert" style="position: fixed; top: 0; right: 0; z-index: 10; width: 25%;">
+	<body style="color: #ffffff; background-color: #000000">
+        <div id="successMsg"></div>
+        {{-- <div id="userFormAlert" class="alert alert-success alert-dismissible fade" role="alert" style="position: fixed; top: 0; right: 0; z-index: 10; width: 25%;">
             <strong>Success: </strong> <span id="userFormStatus">User deleted successfully.</span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @include('layouts.header_menu');
+        </div> --}}
+        @include('layouts.header_menu')
         <div class="container mb-5 mt-5">
             <div id="pageTitle">
-                <h2 class="d-flex justify-content-center">Welcome To Ajax Form</h2>
+                <h2 class="d-flex justify-content-center">Welcome To User Ajax Form</h2>
             </div>
             <div class="mt-4 mb-4">
                 <div class="d-flex align-items-center">
@@ -25,7 +26,7 @@
                     <div class="resultOfInput"></div>
                 </div>
             </div>
-            <table class="table table-striped" id="user-table">
+            <table class="table font-monospace text-light" id="user-table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -57,7 +58,7 @@
             <section id="blog" class="blog"></section><!--/.blog-->
             <!--blog end -->
             <section id="service" class="service">
-                @include('layouts.footer');
+                @include('layouts.footer')
             </section>
             {{-- <div class="row mx-auto">
                 {{ $user_data->links('layouts.pagination-links') }}

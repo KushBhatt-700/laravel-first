@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var successAlert = `
-        <div id="userFormAlert" class="alert alert-success alert-dismissible fade show" role="alert" style="position: fixed; top: 0; right: 0; z-index: 10; width: 25%;">
+        <div id="userFormAlert" class="alert alert-success alert-dismissible fade mb-1 show" role="alert">
             <strong>Success: </strong> <span id="userFormStatus">Show your MSG here.</span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>`;
@@ -45,8 +45,26 @@ $(document).ready(function(){
             type: 'GET',
             url: '/user/delete/'+user_id,
             success:function(data){
-                $(successAlert).clone().prependTo('#navBar');
-                $('span, #userFormStatus').text(data.res);
+                $(successAlert).clone().appendTo('#successMsg');
+                $('#successMsg').css({"position": "fixed", "right": "0", "top": "0", "z-index": "10", "width": "25%"});
+                $('span, #userFormStatus').text(data.res).fadeIn();
+
+                // Function to fade out alerts one by one
+                function removeAlertsSequentially() {
+                    // Select all alerts
+                    let alerts = $('.alert-success');
+                    
+                    // Loop through each alert and remove it one by one
+                    alerts.each(function(index, alert) {
+                        // Set a delay for each alert
+                        setTimeout(function() {
+                            $(alert).fadeOut();
+                        }, index * 7000); // Delay is based on index (3 seconds for each alert)
+                    });
+                }
+                // Call the function to remove the alerts sequentially
+                removeAlertsSequentially();
+                
                 $(this_obj).parent().parent().remove();
                 // $('#userFormAlert').addClass('show');
             },
