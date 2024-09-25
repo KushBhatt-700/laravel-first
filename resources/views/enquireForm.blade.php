@@ -1,11 +1,11 @@
 <!doctype html>
 <html class="no-js" lang="en">
     @include('layouts.head')
-	<body>
-		@include('layouts.header_menu');
+	<body style="color: #ffffff; background-color: #000000">
+		@include('layouts.header_menu')
 		<!--welcome-hero end -->
 		<section id="service" class="service" style="padding: 0px 0 87px;">
-            <div class="container">
+            <div class="container" style="max-width: 900px;">
                 <div class="service-content">
                     <div class="row">
                         <div class="col-md-12">
@@ -16,7 +16,7 @@
 								]) !!}
 									@csrf
 									<div class="col-12">
-										<p class="h1 text-primary text-center">{{ $title }}</p>
+										<p class="h1 text-lite mt-4 text-center">{{ $title }}</p>
 									</div>
 									<div class="col-12">
 										<label for="inputName" class="form-label">Name</label>
@@ -141,7 +141,7 @@
 		<section id="blog" class="blog"></section><!--/.blog-->
 		<!--blog end -->
 		<section id="service" class="service">
-        	@include('layouts.footer');
+        	@include('layouts.footer')
 		</section>
 		<script>
 			$('#formSubmitBtn').mouseenter(function(){

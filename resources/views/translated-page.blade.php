@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
     @include('layouts.head')
-	<body>
+	<body style="color: #ffffff; background-color: #000000">
         @include('layouts.header_menu')
 		<div class="container mb-5 mt-5 border-primary">
 			<div class="card border-primary mb-3 mx-auto" style="max-width: 40%;">

@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light" id="navBar" style="box-shadow: 0px 0px 17px black, 0 0 79px #455889, 0 0 0px darkblue; background-color: #285ad9d4;">
+<nav class="navbar navbar-expand-lg navbar-dark" id="navBar" style="box-shadow: 0px 0px 17px black, 0 0 79px #455889, 0 0 0px darkblue; background-color: #c40b12;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar scroll</a>
+    <a class="navbar-brand text-lite" href="#">Laravel</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,21 +10,26 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Enquire-Form</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">User-Form</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
         </li>
+        <li class="nav-item dropdown end-0 mx-3 position-absolute" style="background-color: #000000"`>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            en
+          </a>
+          <ul id="dropdown-menu" class="dropdown-menu" style="min-width: 0rem; box-shadow: 0px 0px 2px 0px black, 0 0 10px #455889;" aria-labelledby="navbarDropdownMenuLink">
+            <li><a id="dropdown-item" class="dropdown-item" data-lang="en " href="{{ url('/translated-page') }}">en</a></li>
+            <li><a id="dropdown-item" class="dropdown-item" data-lang="hi " href="{{ url('/translated-page/hi') }}">hi</a></li>
+            <li><a id="dropdown-item" class="dropdown-item" data-lang="gu " href="{{ url('/translated-page/gu') }}">gu</a></li>
+            <li><a id="dropdown-item" class="dropdown-item" data-lang="es " href="{{ url('/translated-page/es') }}">es</a></li>
+          </ul>
+        </li>
       </ul>
-    </div>
-    <div class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle bg-dark text-white" style="box-shadow: 0px 0px 2px 0px black, 0 0 10px #455889" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-      <div class="dropdown-menu mt-1 w-10" style="min-width: 70px;" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item w-10" href="{{ url('/translated-page') }}" data-lang="en">en</a>
-          <a class="dropdown-item w-10" href="{{ url('/translated-page/hi') }}" data-lang="hi">hi</a>
-          <a class="dropdown-item w-10" href="{{ url('/translated-page/gu') }}" data-lang="gu">gu</a>
-          <a class="dropdown-item w-10" href="{{ url('/translated-page/es') }}" data-lang="es">es</a>
-      </div>
     </div>
   </div>
 </nav>

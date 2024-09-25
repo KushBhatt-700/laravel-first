@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="en">
     @include('layouts.head')
-	<body>
+	<body style="color: #ffffff; background-color: #000000">
 			@include('layouts.header_menu')
             <div class="container mb-5 mt-5">
                 @if(session()->get('status'))
@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped">
+                <table class="table text-light font-monospace">
                     <!-- <a href="{{route('enquire.add')}}"  style="margin: 0px 0px 0px 90%; padding: 1%;">
                         <button class="btn btn-primary"> Add Enquire </button>
                     </a> -->
@@ -58,7 +58,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                <div class="row mx-auto">
+                <div class="row content-justify-center">
                     {{ $fetch_enquire_form_data->links('layouts.pagination-links') }}
                     {{-- {{ $fetch_enquire_form_data->links('pagination::bootstrap-5') }} --}}
                     {{-- {{ $fetch_enquire_form_data->links('pagination::simple-tailwind') }} --}}
