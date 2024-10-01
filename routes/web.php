@@ -8,6 +8,8 @@ use App\Http\Controllers\TranslatedPageController;
 use App\Http\Controllers\GroupMemberData;
 use App\Http\Controllers\UserDetailsController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +21,6 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::middleware(['grouped'])->group(function (){
     // Group middleware to check if user_role is administrator or age is grater then 18.
     Route::resource('/user-data', ResourceController::class);
@@ -37,26 +38,36 @@ Route::get('/', function () {
 
 Route::get('/sum/{first?}/{second?}', function($first = null, $second = null){
     $data = compact('first', 'second');
-    return view('sum')->with($data);
-    // $sum = $first+$second;
-    // echo $first.'+'.$second.' = '.$sum;
+   return view('sum')->with($data);
+   // $sum = $first+$second;
+   // echo $first.'+'.$second.' = '.$sum;
 });
 
 Route::group(["prefix" => 'enquire-form'], function(){
-    Route::get('/', [EnquireFormController::class, 'index'])->name('enquire.add');
-    Route::post('/', [EnquireFormController::class, 'store']);
-    Route::get('/view', [EnquireFormController::class, 'view'])->name('enquireForm.view');
-    Route::get('/delete/{id}', [EnquireFormController::class, 'delete'])->name('enquireForm.delete');
-    Route::get('/edit/{id}', [EnquireFormController::class, 'edit'])->name('enquireForm.edit');
-    Route::post('/update/{id}', [EnquireFormController::class, 'update'])->name('enquireForm.update');
+   Route::get('/', [EnquireFormController::class, 'index'])->name('enquire.add');
+   Route::post('/', [EnquireFormController::class, 'store']);
+   Route::get('/view', [EnquireFormController::class, 'view'])->name('enquireForm.view');
+   Route::get('/delete/{id}', [EnquireFormController::class, 'delete'])->name('enquireForm.delete');
+   Route::get('/edit/{id}', [EnquireFormController::class, 'edit'])->name('enquireForm.edit');
+   Route::post('/update/{id}', [EnquireFormController::class, 'update'])->name('enquireForm.update');
 });
 
 Route::group(["prefix" => 'user'], function(){
-    Route::get('/get-all-users', [UserDetailsController::class, 'userDataView']);
-    Route::get('/data', function(){ return view('user_data-view'); });
-    Route::get('/delete/{user_id}', [UserDetailsController::class, 'userDelete']);
-    Route::get('/form', function(){ return view('user-form'); });
-    Route::post('/form', [UserDetailsController::class, 'userDataSubmit']);
+   Route::get('/get-all-users', [UserDetailsController::class, 'userDataView']);
+   Route::get('/data', function(){ return view('user_data-view'); });
+   Route::get('/delete/{user_id}', [UserDetailsController::class, 'userDelete']);
+   Route::get('/form', function(){ return view('user-form'); });
+   Route::post('/form', [UserDetailsController::class, 'userDataSubmit']);
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::get('/jquery',function(){
@@ -88,3 +99,7 @@ Route::get('/logout', function(){
     session()->forget(['user_id', 'user_name']);
     return redirect()->back();
 });
+
+Route::get('send-mail', [EmailController::class, 'sendEmail']);
+
+require __DIR__.'/auth.php';
