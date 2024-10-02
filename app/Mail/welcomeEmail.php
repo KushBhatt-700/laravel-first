@@ -20,10 +20,11 @@ class welcomeEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct($message, $subject)
+    public function __construct($message, $subject, $to)
     {
         $this->mailMessage = $message;
         $this->mailSubject = $subject;
+        $this->mailTo = $to;
     }
 
     /**
