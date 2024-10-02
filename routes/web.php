@@ -90,12 +90,12 @@ Route::get('/get-all-session', function (){
     p($session);
     die;
 });
-Route::get('/login', function(){
+Route::get('/user/login', function(){
     session(['user_id' => '1', 'user_name' => 'kushbhatt', 'user_roll' => 'administrator']);
     return redirect()->back();
     // return "User logged-in successfully.";
 });
-Route::get('/logout', function(){
+Route::get('/user/logout', function(){
     session()->forget(['user_id', 'user_name']);
     return redirect()->back();
 });
