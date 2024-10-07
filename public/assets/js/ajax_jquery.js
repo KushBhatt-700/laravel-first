@@ -17,8 +17,17 @@ $(document).ready(function(){
                         <td>`+(value['email'])+`</td>
                         <td>`+(value['gender'])+`</td>
                         <td>`+(value['age'])+`</td>
-                        <td><button id="userDelete"  data-id="`+(value['user_id'])+`" href="#" class="btn btn-danger">Delete</button></td></tr>` 
+                        <td>
+                            <button id="userDelete"  data-id="`+(value['user_id'])+`" href="#" class="btn btn-danger">Delete</button>
+                            <button id="userMail" data-id="`+(value['user_id'])+`" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#" class="btn btn-primary" data-bs-whatever="@mdo">Mail</button>
+                        </td>
+                        </tr>` 
                     )});
+                    // Bind click event to open the modal and set user_id dynamically
+                    $('#tableBody').on('click', '#userMail', function() {
+                        var user_id = $(this).attr('data-id');  // Get the user ID from the data-id attribute
+                        $('#user-id').val(user_id);  // Set the user ID in the hidden input field in the modal form
+                    });
             }else{
                 $('#tableBody').append('<tr><td colspan="7" class="table-active" style="padding-left: 43%;">Data Not Found</td></tr>');
             }
