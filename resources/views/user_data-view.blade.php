@@ -53,6 +53,38 @@
         {{-- </div> --}}
         <!--blog start -->
         <section id="blog" class="blog"></section><!--/.blog-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="exampleModalLabel">New message</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    {!! Form::open([
+                        'url' => '/user-mail',
+                        'method' => 'post',
+                    ]) !!}
+                        @csrf
+                        <!-- Hidden Input for User ID -->
+                        <input type="hidden" name="user_id" id="user-id">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="subject-name" class="col-form-label text-dark">Subject:</label>
+                                <input name="modelMailSubject" type="text" class="form-control" id="subject-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label text-dark">Message:</label>
+                                <textarea name="modelMailMessage" class="form-control" id="message-text"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Send message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!--blog end -->
         {{-- <div class="row mx-auto">
             {{ $user_data->links('layouts.pagination-links') }}

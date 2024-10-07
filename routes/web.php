@@ -1,15 +1,16 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ResourceController;
-use App\Http\Controllers\MainController;
-use App\Http\Controllers\EnquireFormController;
-use App\Http\Controllers\TranslatedPageController;
-use App\Http\Controllers\GroupMemberData;
-use App\Http\Controllers\UserDetailsController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\GroupMemberData;
+use App\Http\Controllers\UserMailSending;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\EnquireFormController;
+use App\Http\Controllers\UserDetailsController;
+use App\Http\Controllers\TranslatedPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,5 +102,7 @@ Route::get('/user/logout', function(){
 });
 
 Route::get('send-mail', [EmailController::class, 'sendEmail']);
+
+Route::post('/user-mail', [UserMailSending::class, 'mailSend']);
 
 require __DIR__.'/auth.php';
